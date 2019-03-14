@@ -4,9 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
+    <title>Guessing Game</title>
 </head>
 <body>
+    <h1>The Walking Dead Guessing Game!</h1>
+    <img src="https://www.visitcalifornia.com/sites/default/files/styles/welcome_image/public/VC_TheWalkingDead_Supplied_Dead-Inside-Doors-TWD-at-USH-Photo-Credit-David-Sprague_1280x640.jpg" class="img-fluid" alt="Responsive image" style="width:1200px;height:600px;">
     
+    <div class="chancesLeft">You have 10 chances to guess!</div>
+     <strong>Guesses Left: </strong> <span id='guesses-left'></span>
+      <strong id='win-counter-title'>Wins:<span id='win-counter'></span></strong>
+      <strong id='losses-counter-title'>Losses:</strong> <span id='losses-counter'></span>
+     
+      <form id="hmform">
+        <input type="text" minlength="1" maxlength="1" name="letter" id="letter" placeholder="Guess a letter" />
+        <input type="submit" id="guess" name="guess" value="Guess" />
+        <button id="restart" name="restart">Restart</button>
+      </form>
+      <ul id="letters"></ul>
+      <p id="hangman"></p>
+      <p id="msg" class="msg"></p>
+
+      <script src="assets/javascript/game.js"></script>
+
 </body>
 </html>
