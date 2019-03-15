@@ -1,6 +1,7 @@
 
 
-var words = ["walkers", "whispers", "hilltop", "saviors", "oceanside", "kingdom", "negan", "alpha", "rick", "glenn", "maggie", "daryl", "lucille", "woodbury"];
+var words = ["walkers", "whispers", "hilltop", "saviors", "oceanside", "kingdom", "negan", "alpha", "rick", "glenn", "maggie", 
+"daryl", "lucille", "woodbury"];
 var messages = {
   win: "You win!",
   lose: "You lose. Try again.",
@@ -17,7 +18,6 @@ document.getElementById("losses-counter").innerHTML = losses;
 function setupGame(){
   answer = words[Math.floor(Math.random()*words.length)];
   lives = 10;
-  
   letters = document.getElementById('letters');
   letters.innerHTML = '<li class="answer">Current Word: </li>'
   
@@ -29,18 +29,15 @@ function setupGame(){
   
   for (var i = 0; i < answer.length; i++){
     letter = '<li class="letter letter' + answer.charAt(i).toUpperCase() +
-      '">' + answer.charAt(i).toUpperCase() + '</li>';
+    '">' + answer.charAt(i).toUpperCase() + '</li>';
     letters.insertAdjacentHTML('beforeend', letter);
   }
-
   hangman = document.getElementById("hangman");
   hangman.innerHTML = "You have " + lives + " lives remaining";
-  
   guess = document.getElementById("letter");
   guessButton = document.getElementById("guess");
   
   document.getElementById("letter").value = '';
-  
   msg = document.getElementById("msg");
   msg.innerHTML = '';
   guessButton.style.display = 'inline';
@@ -63,14 +60,11 @@ function gameOver(win){
     msg.innerHTML = messages.lose;
     losses++;
     document.getElementById("losses-counter").innerHTML = losses;
-      
-      }
-  
+  }
   guess.style.display = guessButton.style.display = 'none';
   guess.value = '';
 }
-
-document.getElementById("hmform").onsubmit = function(e) {
+document.getElementById("form").onsubmit = function(e) {
     if (e.preventDefault) e.preventDefault();
     msg.innerHTML = '';
   msg.classList.remove('error', 'warning');
@@ -79,9 +73,9 @@ document.getElementById("hmform").onsubmit = function(e) {
     
     if (lettersChosen.indexOf(currentGuess) > -1){
       msg.classList.add('warning');
-      msg.innerHTML = messages.guessedAlready;
-      
-    } else
+      msg.innerHTML = messages.guessedAlready; 
+    }
+     else
      { 
       if (availableLetters.indexOf(currentGuess) > -1){
         lettersChosen += currentGuess;
@@ -99,27 +93,20 @@ document.getElementById("hmform").onsubmit = function(e) {
           if (numCorrectLetters === answer.length){
             gameOver(true);
           }
-          
-        } else { 
+          } 
+        else { 
           lives--;
           hangman.innerHTML = "You have " + lives + " lives remaining";
           if (lives === 0) gameOver();
         }
-        
       } else { 
         msg.classList.add('warning');
         msg.innerHTML = messages.invalidLetter;
       }
-      
     }
   } else { 
     msg.classList.add('warning');
     msg.innerHTML = messages.invalidLetter;
   }
-  
-}
-
-
-
-
-  
+  }
+ 
